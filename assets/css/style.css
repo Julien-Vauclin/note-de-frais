@@ -1,0 +1,174 @@
+/* Typo */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,200&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+/* Accueil */
+body{
+  background-color: rgb(184, 222, 253);
+  font-family: 'JetBrains Mono', monospace;
+}
+.barreboutonsconnexion{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.portail{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 290px;
+  font-size: 70px;
+  color: white;
+  background-color: rgb(57, 118, 168);
+}
+.boutonaccueil{
+  background-color: rgb(57, 118, 168);
+  color: white;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  transition: 0.4s;
+}
+.boutonaccueil:hover{
+  background-color: rgb(33, 126, 247);
+  color: white;
+  transition: 0.4s;
+  width: 200px;
+  height: 70px;
+}
+/* Formulaire employé */
+.portailemploye{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 170px;
+  font-size: 70px;
+  color: white;
+  background-color: rgb(57, 118, 168);
+}
+.formulaire{
+  margin: 0 auto;
+  max-width: 70%;
+  margin-top: 100px;
+}
+.boutonconnexionemploye{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: 0.4s;
+}
+.boutoninscriptionemploye{
+
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: 0.4s;
+}
+.connexionemploye{
+  background-color: rgb(57, 118, 168);
+  color: white;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  transition: 0.4s;
+}
+.connexionemploye:hover{
+  background-color: rgb(33, 126, 247);
+  color: white;
+  transition: 0.4s;
+  width: 190px;
+  height: 60px;
+}
+.inscriptionemploye{
+  background-color: rgb(57, 118, 168);
+  color: white;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  transition: 0.4s;
+}
+.inscriptionemploye:hover{
+  background-color: rgb(33, 126, 247);
+  color: white;
+  transition: 0.4s;
+  width: 190px;
+  height: 60px;
+}
+.boutonslogin{
+  display: flex;
+  justify-content: space-evenly;
+}
+.pasdecompte{
+  font-size: 12px;
+  margin-top: 10px;
+  font-weight: bolder;
+  color: black;
+  text-decoration: none;
+}
+/* PAGE INSCRIPTION */
+/* Bouton s'inscrire */
+.sinscrire{
+  background-color: rgb(57, 118, 168);
+  color: white;
+  width: 180px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  transition: 0.4s;
+  margin-bottom: 80px;
+}
+/* Bouton s'inscrire hover */
+.sinscrire:hover{
+  background-color: rgb(33, 126, 247);
+  color: white;
+  transition: 0.4s;
+  width: 190px;
+  height: 60px;
+}
+/* Force mot de passe */
+.power{
+  display: flex;
+  margin-top: 20px;
+}
+.message{
+  text-align: center;
+  margin: auto 0;
+  margin-left: 10px;
+  color: lime;
+}
+.ensemble{
+  margin: 20px;
+  font-size: 20px;
+}
+#exampleInputPassword1{
+  width: 200px;
+  height: 24px;
+  border-radius: 8px;
+  margin-left: 15px;
+}
+.seconnecter{
+  height: 30px;
+  width: 150px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.secure{
+  margin-bottom: 10px;
+}
+.valid {
+  color: green;
+}
+.invalid {
+  color: red;
+}
