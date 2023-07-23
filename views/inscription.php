@@ -315,4 +315,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 </form>
+<!-- fin formulaire -->
 <?php include "components/footer.php" ?>
