@@ -154,12 +154,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $db = new Database();
         $pdo = $db->createInstancePDO();
 
-        // Requête SQL pour insérer les données dans la table "employee"
-        $sql = "INSERT INTO employee (lastname, firstname, mail, phone, password) VALUES (?, ?, ?, ?, ?)";
+        $sql = "SELECT COUNT(*) AS count FROM employee WHERE mail = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$lastname, $firstname, $mail, $phone, $password]);
+        $stmt->execute([$mail]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        echo "L'employé a bien été ajouté. (controller-inscription.php)";
+        if ($result['count'] > 0) {
+          echo "<p class='invalid'>L'adresse e-mail existe déjà dans la base de données.</p>";
+        } else {
+          // Insertion dans la base de données
+          $sql = "INSERT INTO employee (lastname, firstname, mail, phone, password) VALUES (?, ?, ?, ?, ?)";
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute([$lastname, $firstname, $mail, $phone, $password]);
+
+          echo "L'employé a bien été ajouté. (controller-inscription.php)";
+        }
       } catch (PDOException $exception) {
         echo "Erreur lors de l'ajout de l'employé : " . $exception->getMessage() . "<br>";
       }
