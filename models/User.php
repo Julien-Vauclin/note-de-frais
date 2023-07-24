@@ -7,12 +7,30 @@ class Employee
     private string $phone;
     private string $password;
 
-    public static function getAllEmployees(): array
+    public static function getInfosEmployee(string $mail)
     {
-        $pdo = Database::createInstancePDO();
-        $sql = "SELECT `employee`.`id`, `employee`.`lastname`, `employee`.`firstname`, `employee`.`mail`, `employee`.`phone`, `employee`.`password` FROM `employee`";
-        $pdo_statement = $pdo->query($sql);
-        $result = $pdo_statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = "SELECT * FROM employee WHERE mail = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$mail]);
+
+            // Vérifier s'il y a des résultats
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            }
+            // On affiche un message si l'adresse mail est vide
+            elseif (empty($mail)) {
+                echo "Veuillez renseigner votre adresse mail.";
+                return false;
+            } else {
+                // Aucun résultat trouvé pour l'adresse e-mail
+                return false;
+            }
+        } catch (PDOException $exception) {
+            echo "Erreur lors de la récupération des informations de l'employé : " . $exception->getMessage();
+            return false;
+        }
     }
 }

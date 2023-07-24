@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           echo "L'employé a bien été ajouté. (inscription.php)";
           echo '<script>window.alert("Bienvenue ' . $firstname . ' ,vous êtes inscrit(e) !");
-          window.location.href = "login-employe.php";
+          window.location.href = "../controllers/controller-login-employe.php";
           </script>';
         }
       } catch (PDOException $exception) {
