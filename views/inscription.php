@@ -12,7 +12,13 @@ $lastnameError = $firstnameError = $mailError = $phoneError = $passwordError = "
 $securityLevel = 0;
 // $allowSubmission = $messageNom = "" && $messagePrenom = "" && $messageMail = "" && $messageNumero = "" && $messagePassword = "";
 ?>
-<p class="portailemploye">PAGE INSCRIPTION</p>
+<p class="portailinscription">PAGE INSCRIPTION</p>
+<!-- Bouton accueil -->
+<div class="retouraccueilinscription">
+  <a href="accueil.php">
+    <button type="button" class="boutonaccueilinscription">Accueil</button>
+  </a>
+</div>
 <!-- Formulaire de connexion employé -->
 <script>
   function validateForm() {
@@ -60,7 +66,6 @@ $securityLevel = 0;
     return true;
   }
 </script>
-
 <!-- REGEX PHP -->
 <?php
 // Initialisation des variables
@@ -76,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $mail = $_POST['mail'];
   $phone = $_POST['phone'];
   $password = $_POST['password'];
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
   $confirmationMotDePasse = $_POST['confirmationmotdepasse'];
   // Récupération des données du formulaire
   $nomInscrit = $_POST['lastname'];
@@ -85,8 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $motDePasse = $_POST['password'];
   $confirmationMotDePasse = $_POST['confirmationmotdepasse'];
   // Définition des regex
-  $regexLastname = '/^[a-zA-Z]+$/';
-  $regexFirstname = '/^[a-zA-Z]+$/';
+  $regexLastname = '/^[a-zA-Z-]+$/';
+  $regexFirstname = '/^[a-zA-Z-]+$/';
   $regexMail = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/';
   $regexPhone = '/^(06|07)\d{8}$/';
   // Fonction lastname (regex)
@@ -165,9 +171,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           // Insertion dans la base de données
           $sql = "INSERT INTO employee (lastname, firstname, mail, phone, password) VALUES (?, ?, ?, ?, ?)";
           $stmt = $pdo->prepare($sql);
-          $stmt->execute([$lastname, $firstname, $mail, $phone, $password]);
+          $stmt->execute([$lastname, $firstname, $mail, $phone, $hashedPassword]);
 
-          echo "L'employé a bien été ajouté. (controller-inscription.php)";
+          echo "L'employé a bien été ajouté. (inscription.php)";
+          echo '<script>window.alert("Bienvenue ' . $firstname . ' ,vous êtes inscrit(e) !");
+          window.location.href = "login-employe.php";
+          </script>';
         }
       } catch (PDOException $exception) {
         echo "Erreur lors de l'ajout de l'employé : " . $exception->getMessage() . "<br>";
@@ -201,18 +210,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="text" class="form-control" name="phone" id="phone" value="<?php echo htmlspecialchars($phone) ?>">
     <?php echo $messageNumero; ?>
   </div>
-  <!-- Regex telephone -->
-  <!-- <script>
-    let regexPhone = new RegExp('^(06|07)\\d{8}$');
-    phone.addEventListener('input', function() {
-      if (regexPhone.test(phone.value)) {
-        phone.style.border = '2px solid red';
-      } else {
-        phone.style.border = '2px solid green';
-      }
-    })
-  </script> -->
-
   <!-- Mot de passe -->
   <label for="motdepasse" class="form-label">Mot de passe</label>
   <div class="input-group mb-3">
@@ -309,7 +306,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </script>
   <!-- Boutons connexion & inscription -->
   <div class="boutonslogin">
-    <!-- Bouton connexion -->
+    <div class="divboutonaccueillogin">
+      <a href="login-employe.php">
+        <button type="button" class="boutonaccueillogin">Retour</button>
+      </a>
+    </div>
+    <!-- Bouton inscription -->
     <div class="boutonconnexionemploye">
       <button type="submit" name="submit" class="sinscrire">S'inscrire</button>
     </div>
