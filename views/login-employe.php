@@ -61,7 +61,7 @@
   <div class="boutonslogin">
     <!-- Bouton connexion -->
     <div class="boutonconnexionemploye">
-      <button class="connexionemploye">Connexion</button>
+      <button class="connexionemploye" type="submit" name="submit">Connexion</button>
     </div>
     <!-- Bouton inscription -->
     <div class="boutoninscriptionemploye">

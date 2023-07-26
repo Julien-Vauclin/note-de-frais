@@ -15,7 +15,7 @@ $securityLevel = 0;
 <p class="portailinscription">PAGE INSCRIPTION</p>
 <!-- Bouton accueil -->
 <div class="retouraccueilinscription">
-  <a href="accueil.php">
+  <a href="../controllers/controller-accueil.php">
     <button type="button" class="boutonaccueilinscription">Accueil</button>
   </a>
 </div>

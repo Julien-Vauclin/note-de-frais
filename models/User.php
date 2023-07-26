@@ -19,11 +19,6 @@ class Employee
             if ($stmt->rowCount() > 0) {
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $result;
-            }
-            // On affiche un message si l'adresse mail est vide
-            elseif (empty($mail)) {
-                echo "Veuillez renseigner votre adresse mail.";
-                return false;
             } else {
                 // Aucun résultat trouvé pour l'adresse e-mail
                 return false;
