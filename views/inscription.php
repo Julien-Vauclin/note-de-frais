@@ -147,8 +147,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (strlen($motDePasse) >= 8) {
       $securityLevel++;
     }
-
-    if ($securityLevel < 2) {
+    if ($securityLevel == 0) {
+      $messagePassword = "<p class='invalid'>Ce champ est obligatoire.</p>";
+    } else if ($securityLevel < 2) {
       $messagePassword = "<p class='invalid'>Mot de passe trop dangereux.</p>";
     } else {
       $messagePassword = "";

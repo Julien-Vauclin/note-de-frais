@@ -37,7 +37,7 @@ $regexMail = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/';
   <!-- Adresse mail -->
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Adresse e-mail</label>
-    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" name="mail">
+    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" name="mail" value="<?= isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '' ?>">
     <?= $msgMail ?? "" ?>
   </div>
   <!-- Mot de passe -->

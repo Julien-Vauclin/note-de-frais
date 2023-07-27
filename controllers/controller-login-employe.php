@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 //On redirige vers la page d'accueil
                 header('Location: ../controllers/controller-espace-employe.php');
                 exit();
+            } else if ($password == "") {
+                $msgMdp = "<p class='invalid'>Veuillez entrer un mot de passe.</p>";
             } else {
                 $msgMdp = "<p class='invalid'>Le mot de passe est incorrect.</p>";
             }

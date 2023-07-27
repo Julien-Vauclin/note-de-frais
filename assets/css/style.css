@@ -172,6 +172,7 @@ body{
 }
 .invalid {
   color: red;
+  transition: 0.4s;
 }
 .boutonaccueillogin{
   background-color: rgb(57, 118, 168);
