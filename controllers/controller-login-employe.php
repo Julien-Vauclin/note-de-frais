@@ -8,8 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $result = Employee::getInfosEmployee($mail);
         //On vérifie si l'utilisateur existe dans la base de données
-        if ($result == false) {
-            $msgMail = "L'utilisateur n'existe pas. (controller-login-employe.php)";
+        if ($mail == "") {
+            $msgMail = "<p class='invalid'>Veuillez entrer une adresse e-mail.</p>";
+        } else if ($result == false) {
+            $msgMail = "<p class='invalid'>L'utilisateur n'existe pas.</p>";
         } else {
             //On vérifie si le mot de passe est correct
             if (password_verify($password, $result['password'])) {
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../controllers/controller-espace-employe.php');
                 exit();
             } else {
-                echo "Le mot de passe est incorrect. (controller-login-employe.php)";
+                $msgMdp = "<p class='invalid'>Le mot de passe est incorrect.</p>";
             }
         }
     }

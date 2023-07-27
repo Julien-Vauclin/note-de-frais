@@ -14,7 +14,6 @@ class Database
         try {
             // création d'une instance de la classe PDO
             $pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
-            echo "Connexion réussie à la base de données. (database.php)" . "<br>";
             if ($pdo) {
                 return $pdo;
             }

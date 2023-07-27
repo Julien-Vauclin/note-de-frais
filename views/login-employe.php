@@ -1,7 +1,6 @@
 <?php include "components/head.php" ?>
 <?php include "components/navbar.php" ?>
 <?php
-$msgMail = "";
 $messagePassword = "";
 $regexMail = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/';
 ?>
@@ -39,7 +38,7 @@ $regexMail = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/';
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Adresse e-mail</label>
     <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" name="mail">
-    <?php echo $msgMail; ?>
+    <?= $msgMail ?? "" ?>
   </div>
   <!-- Mot de passe -->
   <label for="motdepasse" class="form-label">Mot de passe</label>
@@ -47,6 +46,7 @@ $regexMail = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/';
     <input type="password" class="form-control" id="motdepasse" aria-label="Amount (to the nearest dollar)" name="password">
     <span class="input-group-text"><i class="bi bi-eye-fill" onclick="afficherPassword()"></i></span>
   </div>
+  <?= $msgMdp ?? "" ?>
   <!-- Affichage mot de passe -->
   <script>
     function afficherPassword() {
