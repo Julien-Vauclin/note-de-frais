@@ -7,12 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail = $_POST['mail'];
         $password = $_POST['password'];
         $result = Employee::getInfosEmployee($mail);
-        var_dump($result);
         //On vérifie si l'utilisateur existe dans la base de données
         if ($result == false) {
-            echo "L'utilisateur n'existe pas. (controller-login-employe.php)";
+            $msgMail = "L'utilisateur n'existe pas. (controller-login-employe.php)";
         } else {
-            var_dump($password);
             //On vérifie si le mot de passe est correct
             if (password_verify($password, $result['password'])) {
                 //On démarre la session
