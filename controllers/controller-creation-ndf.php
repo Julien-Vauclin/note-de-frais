@@ -47,8 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
         $ProofError = "Champ obligatoire.";
     }
-    var_dump($_FILES);
-    var_dump($DateError, $PriceError, $ReasonError, $ProofError, $ID_EXPENSES_CLAIM_TYPEError);
     // Si toutes les validations réussissent, on peut insérer les données dans la base de données
     if ($DateError === "" && $PriceError === "" && $ReasonError === "" && $ProofError === "" && $ID_EXPENSES_CLAIM_TYPEError === "") {
         try {
@@ -58,7 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $sql = "INSERT INTO `expenses_claim` (`Date`, `Price`, `Reason`, `Proof`, `ID_EXPENSES_CLAIM_TYPE`, `ID_EMPLOYEE`) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$Date, $Price, $Reason, $Proof, $ID_EXPENSES_CLAIM_TYPE, $_SESSION['user']['ID']]);
-            echo "La note de frais a bien été ajoutée. (creation-ndf.php)";
+            // Alert pour prévenir l'utilisateur que la note de frais a bien été ajoutée
+            echo "<script>alert(\"La note de frais a bien été ajoutée.\")</script>;
+            <script>window.location.href(\"../views/creation-ndf.php\")</script>";
         } catch (PDOException $exception) {
             echo "Erreur lors de l'ajout de la note de frais : " . $exception->getMessage() . "<br>";
         };

@@ -11,11 +11,11 @@ class ExpenseClaim
     private string $ID_STATUS;
     private string $ID_EXPENSES_CLAIM_TYPE;
 
-    public static function getInfosExpenseClaim(string $ID_EMPLOYEE)
+    public static function getExpenseClaim(string $ID_EMPLOYEE)
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = "INSERT INTO `expenses_claim` (`Date`, `Price`, `Reason`, `Proof`,`ID_EXPENSES_CLAIM_TYPE`) VALUES (?, ?, ?, ?, ?)";
+            $sql = "SELECT `expenses_claim` (`Date`, `Price`, `Reason`, `Proof`,`ID_EXPENSES_CLAIM_TYPE`) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$ID_EMPLOYEE]);
 
@@ -24,7 +24,7 @@ class ExpenseClaim
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $result;
             } else {
-                // Aucun résulta trouvé
+                // Aucun résultat trouvé
                 return false;
             }
         } catch (PDOException $exception) {

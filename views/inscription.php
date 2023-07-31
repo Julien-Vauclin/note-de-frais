@@ -10,7 +10,6 @@ $lastname = $firstname = $mail = $phone = $password = "";
 $lastnameError = $firstnameError = $mailError = $phoneError = $passwordError = "";
 // Validation des regex pour envoyer le formulaire
 $securityLevel = 0;
-// $allowSubmission = $messageNom = "" && $messagePrenom = "" && $messageMail = "" && $messageNumero = "" && $messagePassword = "";
 ?>
 <p class="portailinscription">PAGE INSCRIPTION</p>
 <!-- Bouton accueil -->

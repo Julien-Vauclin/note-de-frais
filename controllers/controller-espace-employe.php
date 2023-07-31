@@ -5,3 +5,5 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 include "../views/espace-employe.php";
+require_once "../config.php";
+require_once "../helpers/Database.php";
