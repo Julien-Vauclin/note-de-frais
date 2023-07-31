@@ -10,15 +10,44 @@
     <button type="button" class="boutonaccueilinscription">Accueil</button>
   </a>
 </div>
+<script>
+  function validateExpenseClaim() {
+    var date = document.getElementById('Date').value;
+    var price = document.getElementById('Price').value;
+    var reason = document.getElementById('Reason').value;
+    var id_expenses_claim_type = document.getElementById('ID_EXPENSES_CLAIM_TYPE').value;
+    var regexDate = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+    var regexPrice = /^[0-9]+$/;
+    var regexReason = /[a-z]/;
+    var regexID_EXPENSES_CLAIM_TYPE = /^[0-9]+$/;
+    if (!regexDate.test(date)) {
+      alert("La date est invalide.");
+      return false;
+    }
+    if (!regexPrice.test(price)) {
+      alert("Le prix est invalide.");
+      return false;
+    }
+    if (!regexReason.test(reason)) {
+      alert("La raison est invalide.");
+      return false;
+    }
+    if (!regexID_EXPENSES_CLAIM_TYPE.test(id_expenses_claim_type)) {
+      alert("L'ID du type de note de frais est invalide.");
+      return false;
+    }
+    return true;
+  }
+</script>
 <?php
 // Variables pour stocker les valeurs des champs
-$Date = $Price = $Reason = $Proof = $Validation_date = $Reason_of_cancel = $ID_EMPLOYEE = $ID_STATUS = $ID_EXPENSES_CLAIM_TYPE = "";
+$Date = $Price = $Reason = $Proof = $ID_EXPENSES_CLAIM_TYPE = "";
 // Variables pour stocker les messages d'erreur
-$DateError = $PriceError = $ReasonError = $ProofError = $Validation_dateError = $Reason_of_cancelError = $ID_EMPLOYEEError = $ID_STATUSError = $ID_EXPENSES_CLAIM_TYPEError = "";
+$DateError = $PriceError = $ReasonError = $ProofError = $ID_EXPENSES_CLAIM_TYPEError = "";
 // Variable pour stocker le niveau de sécurité du mot de passe
 $securityLevel = 0;
 ?>
-<form class="formulaire" method="post">
+<form class="formulaire" method="post" onsubmit="return validateExpenseClaim()" enctype="multipart/form-data">
   <!-- Formulaire poru entrer les informations de la note de frais -->
   <!-- Date -->
   <div class="mb-3">
@@ -39,11 +68,11 @@ $securityLevel = 0;
     <small class="text-danger"><?= $ReasonError ?></small>
   </div>
   <!-- Preuve -->
-  <!-- <div class="mb-3">
+  <div class="mb-3">
     <label for="Proof" class="form-label">Preuve</label>
     <input type="file" class="form-control" id="Proof" name="Proof" value="<?= $Proof ?>">
     <small class="text-danger"><?= $ProofError ?></small>
-  </div> -->
+  </div>
   <!-- Select permettant de choisir le type de note de frais. On choisit entre "Frais de repas", "Frais de déplacement", "Frais d'hébergement", "Frais kilométriques" et "Frais d'habillage" -->
   <div class="mb-3">
     <label for="ID_EXPENSES_CLAIM_TYPE" class="form-label">Type de note de frais</label>

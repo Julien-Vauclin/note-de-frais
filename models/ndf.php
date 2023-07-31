@@ -15,7 +15,7 @@ class ExpenseClaim
     {
         try {
             $pdo = Database::createInstancePDO();
-            $sql = "SELECT * FROM expenses_claim WHERE ID_EMPLOYEE = ?";
+            $sql = "INSERT INTO `expenses_claim` (`Date`, `Price`, `Reason`, `Proof`,`ID_EXPENSES_CLAIM_TYPE`) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$ID_EMPLOYEE]);
 
@@ -24,7 +24,7 @@ class ExpenseClaim
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $result;
             } else {
-                // Aucun résultat trouvé
+                // Aucun résulta trouvé
                 return false;
             }
         } catch (PDOException $exception) {
