@@ -17,25 +17,25 @@
     var reason = document.getElementById('Reason').value;
     var id_expenses_claim_type = document.getElementById('ID_EXPENSES_CLAIM_TYPE').value;
     var regexDate = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-    var regexPrice = /^[0-9]+$/;
+    var regexPrice = /^[0-9.,]+$/;
     var regexReason = /[a-z]/;
     var regexID_EXPENSES_CLAIM_TYPE = /^[0-9]+$/;
     if (!regexDate.test(date)) {
-      alert("La date est invalide.");
       return false;
-    }
+      $DateError = "La date est invalide.";
+    };
     if (!regexPrice.test(price)) {
-      alert("Le prix est invalide.");
       return false;
-    }
+      $PriceError = "Le prix est invalide.";
+    };
     if (!regexReason.test(reason)) {
-      alert("La raison est invalide.");
       return false;
-    }
+      $ReasonError = "La raison est invalide.";
+    };
     if (!regexID_EXPENSES_CLAIM_TYPE.test(id_expenses_claim_type)) {
-      alert("L'ID du type de note de frais est invalide.");
       return false;
-    }
+      $ID_EXPENSES_CLAIM_TYPEError = "L'ID du type de note de frais est invalide.";
+    };
     return true;
   }
 </script>

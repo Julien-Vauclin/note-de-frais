@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $DateError = $PriceError = $ReasonError = $ProofError = $ID_EXPENSES_CLAIM_TYPEError = "";
     // On définit les regex
     $regexDate = '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/';
-    $regexPrice = '/^[0-9]+$/';
+    $regexPrice = '/^[0-9.,]+$/';
     $regexReason = '/[a-z]/';
     $regexID_EXPENSES_CLAIM_TYPE = '/^[0-9]+$/';
     // On définit les regex pour chaque champ
