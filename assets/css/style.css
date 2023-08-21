@@ -264,3 +264,21 @@ body{
   width: 210px;
   height: 80px;
 }
+/* bouton deconnexion */
+.boutondeconnexion{
+  background-color: rgb(57, 118, 168);
+  color: white;
+  width: 200px;
+  height: 70px;
+  border-radius: 12px;
+  border: none;
+  font-size: 20px;
+  transition: 0.4s;
+}
+.boutondeconnexion:hover{
+  background-color: rgb(33, 126, 247);
+  color: white;
+  transition: 0.4s;
+  width: 210px;
+  height: 80px;
+}

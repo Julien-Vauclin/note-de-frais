@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $stmt->execute([$Date, $Price, $Reason, $Proof, $ID_EXPENSES_CLAIM_TYPE, $_SESSION['user']['ID']]);
             // Alert pour prévenir l'utilisateur que la note de frais a bien été ajoutée
             echo "<script>alert(\"La note de frais a bien été ajoutée.\")</script>;
-            <script>window.location.href(\"../views/creation-ndf.php\")</script>";
+            <script>window.location.href = \"../controllers/controller-espace-employe.php\"</script>";
         } catch (PDOException $exception) {
             echo "Erreur lors de l'ajout de la note de frais : " . $exception->getMessage() . "<br>";
         };

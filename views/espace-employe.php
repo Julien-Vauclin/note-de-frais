@@ -19,6 +19,14 @@
               <td><?= $ndf['Date'] ?></td>
               <td><?= $ndf['Price'] . "€" ?></td>
               <td><?= $ndf['Reason'] ?></td>
+              <!-- On affiche le bouton "supprimer" -->
+              <td>
+                <form action="" method="POST">
+                  <input type="hidden" name="deleteID" value="<?= $ndf['ID'] ?>">
+                  <input type="hidden" name="ownerID" value="<?= $ndf['ID_EMPLOYEE'] ?>">
+                  <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+              </td>
             </tr>
           <?php endforeach ?>
         </tbody>
@@ -30,6 +38,12 @@
 <div class="retouraccueilinscription">
   <a href="../controllers/controller-accueil.php">
     <button type="button" class="boutonaccueilinscription">Accueil</button>
+  </a>
+</div>
+<!-- Bouton déconnexion -->
+<div class="retouraccueilinscription">
+  <a href="../controllers/controller-login-employe.php">
+    <button type="button" class="boutondeconnexion">Déconnexion</button>
   </a>
 </div>
 <!-- Bouton créer note de frais -->
