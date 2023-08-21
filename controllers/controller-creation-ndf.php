@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!preg_match($regexPrice, $Price)) {
         $PriceError = "Le prix est invalide.";
     }
+
     if (!preg_match($regexReason, $Reason)) {
         $ReasonError = "La raison est invalide.";
     }
@@ -59,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Alert pour prévenir l'utilisateur que la note de frais a bien été ajoutée
             echo "<script>alert(\"La note de frais a bien été ajoutée.\")</script>;
             <script>window.location.href = \"../controllers/controller-espace-employe.php\"</script>";
+            var_dump($DateError, $PriceError, $ReasonError, $ProofError, $ID_EXPENSES_CLAIM_TYPEError);
         } catch (PDOException $exception) {
             echo "Erreur lors de l'ajout de la note de frais : " . $exception->getMessage() . "<br>";
         };
@@ -66,6 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "FAIL !";
     }
 };
-
+var_dump($PriceError, $ReasonError, $ProofError, $ID_EXPENSES_CLAIM_TYPEError);
 // On inclut la vue
 include "../views/creation-ndf.php";

@@ -10,6 +10,7 @@ if (!isset($_SESSION['user'])) {
 if (isset($_POST['deleteID'])) {
     if (isset($_POST['ownerID']) && $_POST['ownerID'] == $_SESSION['user']['ID']) {
         ExpenseClaim::deleteExpenseClaim($_POST['deleteID']);
+        echo "<script>alert(\"La note de frais a bien été supprimée.\")</script>";
     } else {
         echo "Vous ne pouvez pas supprimer cette note de frais";
     }

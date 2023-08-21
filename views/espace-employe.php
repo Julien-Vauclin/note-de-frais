@@ -11,6 +11,7 @@
             <th scope="col">Date</th>
             <th scope="col">Prix</th>
             <th scope="col">Motif</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

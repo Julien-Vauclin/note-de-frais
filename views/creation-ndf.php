@@ -10,35 +10,6 @@
     <button type="button" class="boutonaccueilinscription">Accueil</button>
   </a>
 </div>
-<script>
-  function validateExpenseClaim() {
-    var date = document.getElementById('Date').value;
-    var price = document.getElementById('Price').value;
-    var reason = document.getElementById('Reason').value;
-    var id_expenses_claim_type = document.getElementById('ID_EXPENSES_CLAIM_TYPE').value;
-    var regexDate = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-    var regexPrice = /^[0-9.,]+$/;
-    var regexReason = /[a-z]/;
-    var regexID_EXPENSES_CLAIM_TYPE = /^[0-9]+$/;
-    if (!regexDate.test(date)) {
-      return false;
-      $DateError = "La date est invalide.";
-    };
-    if (!regexPrice.test(price)) {
-      return false;
-      $PriceError = "Le prix est invalide.";
-    };
-    if (!regexReason.test(reason)) {
-      return false;
-      $ReasonError = "La raison est invalide.";
-    };
-    if (!regexID_EXPENSES_CLAIM_TYPE.test(id_expenses_claim_type)) {
-      return false;
-      $ID_EXPENSES_CLAIM_TYPEError = "L'ID du type de note de frais est invalide.";
-    };
-    return true;
-  }
-</script>
 <?php
 // Variables pour stocker les valeurs des champs
 $Date = $Price = $Reason = $Proof = $ID_EXPENSES_CLAIM_TYPE = "";
@@ -47,7 +18,7 @@ $DateError = $PriceError = $ReasonError = $ProofError = $ID_EXPENSES_CLAIM_TYPEE
 // Variable pour stocker le niveau de sécurité du mot de passe
 $securityLevel = 0;
 ?>
-<form class="formulaire" method="post" onsubmit="return validateExpenseClaim()" enctype="multipart/form-data">
+<form class="formulaire" method="post" enctype="multipart/form-data">
   <!-- Formulaire poru entrer les informations de la note de frais -->
   <!-- Date -->
   <div class="mb-3">
