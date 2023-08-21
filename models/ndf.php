@@ -11,6 +11,28 @@ class ExpenseClaim
     private string $ID_STATUS;
     private string $ID_EXPENSES_CLAIM_TYPE;
 
+    public static function getAllExpensesClaim(string $ID_EMPLOYEE)
+    {
+        try {
+            $pdo = Database::createInstancePDO();
+            $sql = "SELECT * FROM `expenses_claim` WHERE `ID_EMPLOYEE` = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$ID_EMPLOYEE]);
+
+            // Vérifier s'il y a des résultats
+            if ($stmt->rowCount() > 0) {
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
+            } else {
+                // Aucun résultat trouvé
+                return false;
+            }
+        } catch (PDOException $exception) {
+            echo "Erreur lors de la récupération des informations de l'employé : " . $exception->getMessage();
+            return false;
+        }
+    }
+
     public static function createExpenseClaim(string $ID_EMPLOYEE)
     {
         try {
