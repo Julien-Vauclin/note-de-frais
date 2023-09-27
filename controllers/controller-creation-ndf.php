@@ -68,6 +68,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "FAIL !";
     }
 };
-var_dump($PriceError, $ReasonError, $ProofError, $ID_EXPENSES_CLAIM_TYPEError);
 // On inclut la vue
 include "../views/creation-ndf.php";
